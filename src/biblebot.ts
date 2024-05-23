@@ -104,6 +104,8 @@ client.on('messageCreate', async help => {
           .setTitle('BibleBot Help')
           .setDescription('Welcome to BibleBot! Here are the commands you can use:')
           .addFields(
+            { name: '!info', value: 'Provides a brief overview of the BibleBot.' },
+            { name: '!help', value: 'Provides a list of commands you can use.' },
             { name: '!getVotd', value: 'Retrieves the Verse of the Day.' },
             { name: '!getVerse <Book> <Chapter> <Verse> <Translation>', value: 'Searches for a specific verse in the Bible.\nExample Usage:\n`!getVerse John 3 16`\n`!getVerse John 3 16 KJV`' },
           )
@@ -126,5 +128,12 @@ client.on('messageCreate', async info => {
   }
 });
 
+client.on('messageCreate', async amen => {
+  if (amen.author.bot) return;
+
+  if (amen.content.toLowerCase() === "amen") {
+    await amen.reply('Jesus!');
+  }
+});
 
 export default client;
